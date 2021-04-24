@@ -24,6 +24,11 @@ Required: **NO**
 
 The name you want the file to have in Google Drive. If this input is not provided, it will use the `filename`.
 
+## ``overwrite``
+Required: **NO**
+
+If you want to overwrite the filename with existing file, it will use the `filename`.
+
 ## ``folderId``
 Required: **YES**. 
 
@@ -62,8 +67,10 @@ jobs:
       - name: Upload to gdrive
         uses: team-tumbleweed/gdrive-upload-action@main
         with:
-          filename: "archive.zip"
-          name: "documentation.zip"
-          folderId: ${{ secrets.folderId }}
           credentials: ${{ secrets.credentials }}
+          filename: "archive.zip"
+          folderId: ${{ secrets.folderId }}
+          name: "documentation.zip" # optional string
+          overwrite: "true" # optional boolean
+          
 ```
